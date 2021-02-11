@@ -1,21 +1,21 @@
-# A climber profesionnal's website clone 
+# A profesionnal climber's website clone 
 
 ## Description
 
-This repository contains the files used for generating a clone of the home page of the climber pro Sébastien Berthe's [website](http://sebastienberthe.com/), who is my brother. The original website is made with a wordpress template and the use of plugins for the animations (scroll animations, buttons animations, navbar burger...).
+This repository contains the files used for generating a clone of the home page of the pro climber Sébastien Berthe's [website](http://sebastienberthe.com/), who is my brother. The original website is made with a wordpress template and the use of plugins for the animations (scroll animations, buttons animations, navbar burger...).
 
 - Original website: http://sebastienberthe.com/
 - Clone website: https://sebastienberthe-clone.netlify.app/
 
-All the source code's files are in the assets folder. 
+All the source code files are in the assets folder. 
 
 ## DEMO
 (Click to open the video)
 [![Watch the video](https://img.youtube.com/vi/gvDUYCyTFbc/maxresdefault.jpg)](https://www.youtube.com/watch?v=gvDUYCyTFbc&feature=youtu.be)
 
-## Skills worked and technologies used in this exercice
+## Skills worked and technologies used in this exercise
 
-- Training with animations: buttons animations (with css ::pseudo-element), smooth scroll animation (with js scripts, use of 'animated-scroll-to' plugin, use of lodash to manage scroll listener and use of hooks with React), burger navbar animation, vertical menu expand animation...
+- Training with animations: button animations (with css ::pseudo-element), smooth scroll animation (with js scripts, use of 'animated-scroll-to' plugin, use of lodash to manage scroll listener and use of hooks with React), burger navbar animation, vertical menu expand animation...
 - ReactJS for reusability of components
 - SASS for better organisation of the style
 - Webpack configurations
