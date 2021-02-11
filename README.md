@@ -2,10 +2,12 @@
 
 ## Description
 
-This repository contains the files used for generating a clone of the home page of the climber pro Sébastien Berthe's website [pip](http://sebastienberthe.com/), who is my brother. The original website is made with a wordpress template and the use of plugins for the animations (scroll animations, buttons animations, navbar burger...).
+This repository contains the files used for generating a clone of the home page of the climber pro Sébastien Berthe's [website](http://sebastienberthe.com/), who is my brother. The original website is made with a wordpress template and the use of plugins for the animations (scroll animations, buttons animations, navbar burger...).
 
 - Original website: http://sebastienberthe.com/
 - Clone website: https://sebastienberthe-clone.netlify.app/
+
+All the source code's files are in the assets folder. 
 
 ## DEMO
 
