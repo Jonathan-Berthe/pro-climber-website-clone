@@ -1,0 +1,294 @@
+.section {
+    // A section take the complete screen
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.section-1 {
+    background-image: url("../ressources/2018/11/sébastien-berthe-grimpeur-professionnel.jpg");
+    @extend %background-image-cover-center;
+
+    .main-title-container {
+        height: 100vh;
+        @extend %flex-center;
+        flex-direction: column;
+    }
+
+    .main-title-content {
+        width: 80vw;
+        text-align: center;
+        font-size: 90px;
+        font-weight: 400;
+        line-height: 90px;
+        letter-spacing: 5px;
+        color: #f1f1f1;
+        text-shadow: 2px 2px 15px #909090;
+    }
+}
+
+.section-2 {
+    background-image: url("../ressources/2018/11/sebastien-berthe-heart-route-yosemite.jpg");
+    @extend %background-image-cover-center;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    // translate to avoir overlap with the nav indicators
+    .article-card {
+        transform: translateX(-30px);
+    }
+
+}
+
+.section-3 {
+    background-image: url("../ressources/2018/12/freyr.jpg");
+    @extend %background-image-cover-center;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2fr 3fr 2fr;
+
+    .title-section-container {
+        grid-column: 1 / span 3;
+        grid-row: 1 / span 1;
+    }
+
+    .item-container {
+        @extend %flex-center;
+        flex-direction: column;
+        width: 27vw;
+        color: #f1f1f1;
+        text-align: center;
+        justify-self: center; // to be center in the grid area
+    }
+
+    .icon-container {
+        @extend %flex-center;
+        height: 45%;
+        width: 100%; 
+        .item-icon {
+            @extend %flex-center;
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            border: 1px #f1f1f133 solid;
+            font-size: 25px;
+            transition: transform 0.3s ease-out;
+            &:hover {
+                background-color: #8a8f6a;
+                transform: translateY(-10px);
+            }
+        }
+    }
+
+    .item-title {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 26px;
+        letter-spacing: 4px;
+        margin-bottom: 20px;
+    }
+
+    .item-content {
+        line-height: 22px;
+        font-family: "Raleway", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .button-container {
+        @extend %flex-center;
+        grid-column: 1 / span 3;
+        grid-row: 3 / span 1;
+        
+    }
+
+}
+
+.section-4 {
+    background-image: url("../ressources/2018/11/sébastien-berthe-razorblade-freyr-belgique-8c.jpg");
+    @extend %background-image-cover-center;
+
+    @extend %flex-center;
+
+    // To avoid overlap of video
+    .article-card {
+        transform: translateX(-30px);
+    }
+
+    iframe {
+        z-index: 2;
+        width: 42vw;
+        height: calc(42vw / 1.7778); // To have the good video ratio
+    }
+
+}
+
+.section-5 {
+    background-image: url("../ressources/2018/11/blamann-norvege-granite.jpg");
+    @extend %background-image-cover-center;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 3fr 3fr 4fr;
+
+    .title-section-container {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .logo-row-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        .logo2-row2 {
+            transform: translateY(35px); // Disign effect
+        }
+    }
+
+    .section-footer {
+        @extend %flex-center;
+        flex-direction: column;
+    }
+
+    .footer-title {
+        border-bottom: solid 1px #f1f1f188;
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 600;
+        color: #f1f1f1;
+        padding-bottom: 10px;
+    }
+
+    .follow-row {
+        display: flex;
+    }
+
+    .follow-logo-container {
+        @extend %flex-center;
+        height: 80px;
+        width: 80px;
+        overflow: hidden; // To hide the ::before element
+        position: relative; // We want to position absolute the ::before element
+
+        img {
+            height: 30px;
+            width: 30px;
+            color: #f1f1f1;
+        }
+        &:hover {
+            img {
+                opacity: 0.5;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 1px;
+            background-color: #f1f1f188;
+            width: 80%;
+            left: -80%;
+            z-index: 3;
+        }
+
+        &:hover::before {
+            transform: translateX(225%);
+            transition: transform 0.3s ease-out;
+        }
+    }
+}
+
+// MEDIA-QUERY FOR SMALL SCREEN < 800px
+
+@media #{$media-small} {
+    .section {
+        overflow-y: scroll;
+        height: auto;
+        padding: 20px 0;
+        min-height: 100vh;
+    }
+
+    .section-1 .main-title-content {
+        font-size: 45px;
+        letter-spacing: 3px;
+    }
+
+    .section-2 {
+        min-height: 80vh;
+        background: #fff;
+        justify-content: center;
+        .article-card {
+            transform: translateX(0);
+            width: 85% !important;
+        }
+    }
+
+    .section-3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .title-section-container {
+            margin-bottom: 15px;
+        }
+
+        .item-container {
+            width: 90vw;
+            height: auto;
+            margin: 15px 0;
+
+            .icon-container .item-icon {
+                width: 66px;
+                height: 66px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .section-4 {
+        flex-direction: column;
+
+        .article-card {
+            width: 85% !important;
+            transform: translateX(0); // reset of the translate
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 85vw;
+            height: calc(85vw / 1.7778); // To have the good video ratio
+        }
+    }
+
+    .section-5 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .title-section-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-row-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+
+            & * {
+                margin: 15px 0;
+            }
+        }
+
+        .section-footer {
+            margin-top: 20px;
+        }
+    }
+}
+

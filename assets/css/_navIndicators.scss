@@ -1,0 +1,35 @@
+.nav-indicator-container {
+    @extend %flex-center;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 100%;
+    transform: translate(-3vw, -50%);
+    z-index: 15;
+    .nav-indicator-item {
+        height: 5px;
+        width: 5px;
+        margin: 7px;
+        border-radius: 50%;
+        background-color: #333;
+        cursor: pointer;
+        transition: transform 0.2s ease-out;
+
+        &:hover {
+            transform: scale(2);
+        }
+
+        &.active {
+            transform: scale(2.5);
+        }
+
+        &.white-mode {
+            background-color: #fff;
+        }
+    }
+
+    // To avoid overflow in small screen mode
+    @media #{$media-small}{
+        transform: translate(-7vw, -50%);
+    }
+}

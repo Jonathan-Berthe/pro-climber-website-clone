@@ -1,0 +1,10 @@
+// Media-query
+$small: 800px;
+$media-small:"only screen and (max-width: #{$small})";
+
+// time of the expand animation of the vertical menu 
+$timeAnim: 0.2s;
+
+// width dimensions for the vertical menu
+$verticalMenuContainerExpandWidth: 350px;
+$exteriorBlocWidth: calc(100vw - #{$verticalMenuContainerExpandWidth});

@@ -1,0 +1,295 @@
+// If we open the vertical menu (click on burger) => horizontal offset animation of 80px to the left for the whole app
+#app {
+    position: absolute;
+    transition: left $timeAnim ease-out;
+    left: 0;
+    &.menu-expand {
+        left: -80px;
+
+        // we also want a brightness filter everywhere except on the vertical-menu-container = ".section, .horizontal-menu-container"
+        .section,
+        .horizontal-menu-container {
+            filter: brightness(0.75);
+        }
+
+        // ... but no brightness filter or left offset in small screen mode
+        @media #{$media-small} {
+            left: 0;
+            .section,
+            .horizontal-menu-container {
+                filter: brightness(1);
+            }
+        }
+    }
+}
+
+// Menu horizontal
+
+.horizontal-menu-container {
+    width: 100%;
+    @extend %flex-center;
+    padding: 20px;
+    position: fixed;
+    z-index: 10;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ul-menu {
+        @extend %flex-center;
+        font-weight: 600;
+        font-size: 14px;
+        color: #333; // By default, color of text is black, and will become white if we apply the class 'white-mode'
+    }
+
+    // White-mode
+    .ul-menu.white-mode {
+        color: #f1f1f1;
+        .menu-item::before {
+            background-color: #f1f1f150; // The small line that cross .menu-item when hover will be in white-mode too
+        }
+    }
+
+    .menu-item {
+        position: relative;
+        overflow: hidden; // We don't want to see the ::before element (except when it cross the .menu-item durint anim)
+        cursor: pointer;
+        padding: 5px 15px;
+        margin: 0 2px;
+        text-transform: uppercase;
+
+        &::before {
+            content: "";
+            pointer-events: none;
+            height: 1px;
+            width: 100px;
+            position: absolute;
+            top: 50%;
+            transform: translateX(-115px);
+            opacity: 1;
+            background-color: #33333350;
+        }
+        &:hover::before {
+            transform: translateX(115px);
+            transition: transform 0.9s ease-out;
+        }
+
+        // reset of <a/> style
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            height: 15px;
+            width: 15px;
+        }
+
+        &.active {
+            border: solid #33333320 1px;
+            border-radius: 1px;
+        }
+
+        &.active.white-mode {
+            border-color: #f1f1f120;
+        }
+    }
+}
+
+
+.exterior-bloc {
+    position: fixed;
+    height: 100vh;
+    width: $exteriorBlocWidth;
+    left: 0;
+    z-index: 100;
+    transition: visibility $timeAnim ease-out;
+
+    &.not-visible {
+        visibility: hidden;
+    }
+
+    &.visible {
+        visibility: visible;
+        cursor: crosshair;
+    }
+}
+
+.vertical-menu-container {
+    @extend %flex-center;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    width: $verticalMenuContainerExpandWidth;
+    right: 0; // On the right of the screen (only in large screen mode)
+
+    cursor: initial; // Because we don't want to herite of the crosshair pointor of .exterior-bloc parent
+    z-index: 10;
+
+    background: url("../ressources/2018/10/side-10-3.jpg");
+    background-repeat: no-repeat;
+
+    transition: transform $timeAnim ease-out;
+
+    &.not-visible {
+        transform: translateX($verticalMenuContainerExpandWidth);
+    }
+
+    &:first-child {
+        padding-top: 20px;
+    }
+
+    img {
+        width: 73px;
+        height: 73px;
+    }
+
+    .ul-menu {
+        flex-direction: column;
+        @extend %flex-center;
+        width: 100%;
+        font-weight: 600;
+        font-size: 14px;
+        color: #f1f1f1;
+    }
+
+    .menu-item {
+        cursor: pointer;
+        @extend %flex-center;
+        height: 40px;
+        width: 80%;
+        text-transform: uppercase;
+        margin: 0 2px;
+        position: relative;
+
+        border-bottom: solid #f1f1f110 1px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        // reset of <a/> style
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            height: 15px;
+            width: 15px;
+        }
+
+        &:hover::before {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            background-color: #333;
+            width: 350px;
+            height: 100%;
+        }
+    }
+
+    .copyright {
+        margin-bottom: 20px;
+        border-top: dotted #f1f1f144 1px;
+        padding-top: 20px;
+    }
+
+    .follow-row {
+        padding-bottom: 10px;
+        display: flex;
+        .follow-logo-container {
+            @extend %flex-center;
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            margin: 0 5px;
+            text-align: center;
+
+            img {
+                height: 15px;
+                width: 15px;
+                opacity: 0.5;
+            }
+
+            &:hover {
+                background-color: #f1f1f122;
+
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+// MEDIA-QUERY FOR SMALL SCREEN < 800px
+
+@media #{$media-small} {
+    .exterior-bloc {
+        left: 45vw;
+        width: 55vw;
+    }
+
+    .horizontal-menu-container {
+        background-color: #fff;
+        height: 113px;
+        padding: 0 20px;
+        border-bottom: #33333344 1px solid;
+        z-index: 3;
+        * {
+            color: #333;
+        }
+
+        // Burger is always black in small screen
+        .burger {
+            .burger-line,
+            .burger-line::before {
+                background-color: #333;
+            }
+        }
+
+        img {
+            width: 73px;
+            height: 73px;
+        }
+    }
+
+    .vertical-menu-container {
+        left: 0;
+        background: #333;
+        width: 45vw;
+        &.not-visible {
+            transform: translateX(-45vw);
+        }
+        .menu-item {
+            opacity: 0.5;
+            padding-left: 25px;
+            justify-content: flex-start;
+            width: 100%;
+            margin: 0;
+            border-bottom: solid #f1f1f110 1px;
+            font-size: 10px;
+            font-weight: 400;
+
+            &:first-child {
+                border-top: solid #f1f1f110 1px;
+            }
+
+            &:last-child {
+                border-bottom: solid #f1f1f110 1px;
+            }
+
+            &:hover {
+                background-color: #252525;
+                opacity: 1;
+            }
+
+            &:hover::before {
+                display: none;
+            }
+        }
+    }
+}
