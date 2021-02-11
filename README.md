@@ -10,7 +10,7 @@ This repository contains the files used for generating a clone of the home page 
 All the source code's files are in the assets folder. 
 
 ## DEMO
-
+(Click to open the video)
 [![Watch the video](https://img.youtube.com/vi/gvDUYCyTFbc/maxresdefault.jpg)](https://www.youtube.com/watch?v=gvDUYCyTFbc&feature=youtu.be)
 
 ## Skills worked and technologies used in this exercice
